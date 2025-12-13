@@ -37,3 +37,11 @@ The application is inspired by IMDb Top 250 Movies and is built with scalability
 - Default role for all users is USER
 
 ### Admin Credentials
+
+
+###   ENV FILE
+
+DATABASE_URL=mongodb://127.0.0.1:27017/ramji
+SECRETE_KEY=mahadev
+PORT=3000
+
