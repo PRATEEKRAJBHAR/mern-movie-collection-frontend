@@ -14,12 +14,10 @@
 
 // export default API;
 
-
 import axios from "axios";
 
-// Replace with your deployed Vercel backend URL
 const API = axios.create({
-  baseURL: "https://prateeks-projects-54eaba72.vercel.app/api/users",
+  baseURL: import.meta.env.VITE_API_URL + "api/users",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
