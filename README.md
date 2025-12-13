@@ -45,3 +45,35 @@ DATABASE_URL=mongodb://127.0.0.1:27017/ramji
 SECRETE_KEY=mahadev
 PORT=3000
 
+### Admin Email and Passowrod
+
+Email: admin@gmail.com
+Password: admin
+
+
+
+## 👤 User Features
+- View all movies with pagination
+- Search movies by name or description
+- Sort movies by:
+  - Name
+  - Rating
+  - Release Date
+  - Duration
+
+---
+
+## 🛡 Admin Features
+- Add new movie
+- Edit movie details
+- Delete movies
+- Access secured admin routes
+
+
+### Start backend server:
+
+npm start
+
+### start front end
+cd vite-project
+npm run dev
