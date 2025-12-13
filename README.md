@@ -7,73 +7,34 @@ The application is inspired by IMDb Top 250 Movies and is built with scalability
 
 ---
 
-## 🚀 Live Application
-- Frontend (Netlify): https://your-frontend-url.netlify.app
-- Backend (Railway/Render): https://your-backend-url.com
-
----
-
 ## 🛠 Tech Stack
 
 ### Frontend
 - React.js
 - Material-UI (MUI)
-- Redux / Context API
+- Redux
 - React Router DOM
 - Axios
 
 ### Backend
 - Node.js
 - Express.js
-- MongoDB (MongoDB Atlas)
+- MongoDB
 - JWT Authentication
 
 ---
 
-## 🔐 Authentication & Authorization
-- JWT-based authentication
-- Role-based access control (Admin & User)
-- Admin-only protected routes
-- Default role for all users is USER
-
-### Admin Credentials
-
-
-###   ENV FILE
-
-DATABASE_URL=mongodb://127.0.0.1:27017/ramji
-SECRETE_KEY=mahadev
-PORT=3000
-
-### Admin Email and Passowrod
-
-Email: admin@gmail.com
-Password: admin
-
-
-
 ## 👤 User Features
-- View all movies with pagination
-- Search movies by name or description
-- Sort movies by:
-  - Name
-  - Rating
-  - Release Date
-  - Duration
+- View movies with pagination
+- Search & sort movies
+
+## 🛡 Admin Features
+- Add / Edit / Delete movies
 
 ---
 
-## 🛡 Admin Features
-- Add new movie
-- Edit movie details
-- Delete movies
-- Access secured admin routes
+## ▶️ Run Project
 
-
-### Start backend server:
-
+### Backend
+```bash
 npm start
-
-### start front end
-cd vite-project
-npm run dev
