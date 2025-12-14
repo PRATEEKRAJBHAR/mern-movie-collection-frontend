@@ -1,14 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import API from "../Apis/Api";
-import { thunk } from "redux-thunk";
 
+// REGISTER
 export const fetchUsers = createAsyncThunk(
   "user/registerUser",
   async (userData, thunkAPI) => {
     try {
       const res = await API.post("/register", userData);
-      console.log(res,"this is responsesssss");
-      console.log(userData,"user data");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data);
@@ -16,17 +14,12 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-
-
-// this is login
-
+// LOGIN
 export const loginUsers = createAsyncThunk(
   "user/loginUser",
   async (loginUserData, thunkAPI) => {
     try {
       const res = await API.post("/login", loginUserData);
-      console.log(res,"this is response");
-      console.log(loginUserData,"user data");
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data);
@@ -34,25 +27,18 @@ export const loginUsers = createAsyncThunk(
   }
 );
 
-
-
-
-
+// FETCH MOVIES
 export const fetchMovies = createAsyncThunk(
-  "user/fetchAllmovies",
-  async ({
-    search = "",
-    token,
-    sortedField = "",
-    sortedOrder = "",
-    page = 1,
-    limit = 10
-  }, thunkAPI) => {
+  "movies/fetch",
+  async (
+    { search = "", token, sortedField = "", sortedOrder = "", page = 1, limit = 10 },
+    thunkAPI
+  ) => {
     try {
       const res = await API.get(
         `/movies?search=${search}&sortedField=${sortedField}&sortedOrder=${sortedOrder}&page=${page}&limit=${limit}`,
         {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       return res.data;
@@ -62,46 +48,38 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
-
-
-export const createMovie=createAsyncThunk(
-  "create/movies",
-  async(createMovie,thunkAPI)=>{
-    try{
-      const res=await API.post('/create-movie',createMovie)
-      return res.data
-
-    }catch(err){
-      return thunkAPI.rejectWithValue(err.response?.data)
-
+// CREATE MOVIE
+export const createMovie = createAsyncThunk(
+  "movies/create",
+  async (movieData, thunkAPI) => {
+    try {
+      const res = await API.post("/create-movie", movieData);
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data);
     }
   }
-)
+);
 
-
-
-
-export const EditMovieColletion=createAsyncThunk(
-  'edit/editMoviecolletion',
-  async(editMovieData,thunkAPI)=>{
-    try{
-      const edit=await API.put(`/update/${editMovieData._id}`,editMovieData)
-      console.log(edit);
-      return edit.data
-    }catch(err){
-      return thunkAPI.rejectWithValue(err.response?.data)
+// UPDATE MOVIE
+export const EditMovieCollection = createAsyncThunk(
+  "movies/update",
+  async (editMovieData, thunkAPI) => {
+    try {
+      const res = await API.put(`/update/${editMovieData._id}`, editMovieData);
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data);
     }
   }
-)
+);
 
-
-
-// delete movie collection
+// DELETE MOVIE
 export const DeleteMovieCollection = createAsyncThunk(
-  'delete/Moviecollection',
+  "movies/delete",
   async (id, thunkAPI) => {
     try {
-      const res = await API.delete(`/delete/${id}`); // send only id in URL
+      const res = await API.delete(`/delete/${id}`);
       return res.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data);
