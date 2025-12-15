@@ -1,23 +1,19 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { createMovie, EditMovieColletion } from "../Thunk/Thunk";
+import { createMovie, EditMovieCollection } from "../Thunk/Thunk";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { movieSchema } from "../Yup/YupValidation";
-
-
+import { CLEAR_EDIT_MOVIE } from "../Thunk/ReducerOrSlice";
 
 function CreateMovie() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user);
+  const { user, editMovie } = useSelector((state) => state.user);
   const isAdmin = user?.role === "admin";
-
-  const editMovie = useSelector((state) => state.user.editMovie);
 
   useEffect(() => {
     if (!isAdmin) {
@@ -41,11 +37,10 @@ function CreateMovie() {
       let res;
 
       if (editMovie) {
-        res = await dispatch(EditMovieColletion(values));
-        if (EditMovieColletion.fulfilled.match(res)) {
+        res = await dispatch(EditMovieCollection(values));
+        if (EditMovieCollection.fulfilled.match(res)) {
           Swal.fire("Updated!", "Movie updated successfully!", "success");
         }
-        navigate("/listingAllmovies");
       } else {
         res = await dispatch(createMovie(values));
         if (createMovie.fulfilled.match(res)) {
@@ -53,7 +48,9 @@ function CreateMovie() {
         }
       }
 
+      dispatch(CLEAR_EDIT_MOVIE());
       resetForm();
+      navigate("/listingAllmovies");
     },
   });
 
@@ -163,7 +160,6 @@ function CreateMovie() {
           }
         />
 
-        {/* ONLY ADMIN CAN SUBMIT */}
         {isAdmin && (
           <Button
             fullWidth
