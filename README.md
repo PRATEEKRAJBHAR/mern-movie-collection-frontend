@@ -1,40 +1,107 @@
-# 🎬 MERN Stack Movie Collection Application
+🎬 MERN Stack Movie Collection Application
+📌 Project Overview
 
-## 📌 Project Overview
-This is a full-stack MERN Movie Collection application with JWT-based authentication and role-based access control. Users can browse, search, and sort movies, while administrators can add, edit, and delete movie records.
+This is a full-stack MERN Movie Collection application with JWT-based authentication and role-based access control.
+Users can browse, search, and sort movies, while administrators can add, edit, and delete movie records.
 
 The application is inspired by IMDb Top 250 Movies and is built with scalability and performance in mind.
 
----
+🚀 Live Application
 
-## 🛠 Tech Stack
+Frontend (vercel): [https://your-frontend-url.netlify.app](https://mern-movie-collection-frontend.vercel.app/)
 
-### Frontend
-- React.js
-- Material-UI (MUI)
-- Redux
-- React Router DOM
-- Axios
+Backend (vercel):[ https://your-backend-url.com](https://mern-movie-collection-backend.vercel.app/)
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB
-- JWT Authentication
+🛠 Tech Stack
+Frontend
 
----
+React.js
 
-## 👤 User Features
-- View movies with pagination
-- Search & sort movies
+Material-UI (MUI)
 
-## 🛡 Admin Features
-- Add / Edit / Delete movies
+Redux / Context API
 
----
+React Router DOM
 
-## ▶️ Run Project
+Axios
 
-### Backend
-```bash
-npm start
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB (MongoDB Atlas / Local)
+
+JWT Authentication
+
+🔐 Authentication & Authorization
+
+JWT-based authentication
+
+Role-based access control (Admin & User)
+
+Admin-only protected routes
+
+Default role for all users is USER
+
+Admin Credentials
+Email: admin@gmail.com
+Password: admin
+
+👤 User Features
+
+View all movies with pagination
+
+Search movies by name or description
+
+Sort movies by:
+
+Name
+
+Rating
+
+Release Date
+
+Duration
+
+
+End point 
+
+| Method | Endpoint                   | Description                               | Auth | Role  |
+| ------ | -------------------------- | ----------------------------------------- | ---- | ----- |
+| GET    | `/api/users/import-movies` | Import movies into database               | ✅    | Admin |
+| GET    | `/api/users/movies`        | Get all movies (search, sort, pagination) | ✅    | User  |
+| POST   | `/api/users/create-movie`  | Create a new movie                        | ✅    | Admin |
+| PUT    | `/api/users/update/:id`    | Update movie by ID                        | ✅    | Admin |
+| DELETE | `/api/users/delete/:id`    | Delete movie by ID                        | ✅    | Admin |
+
+
+🛡 Admin Features
+
+Add new movie
+
+Edit movie details
+
+Delete movies
+
+Access secured admin routes
+
+
+
+Navigate to front-end folder:
+
+cd vite-project
+
+
+
+
+
+Create a .env file with the following variables:
+VITE_API_URL=https://mern-movie-collection-backend.vercel.app/api/users
+
+
+
+Start the backend server:
+
+npm run start
